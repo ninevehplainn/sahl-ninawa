@@ -1,1 +1,311 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101c2c">
+<meta name="description" content="سهل نينوى - منصة إعلامية تنقل أخبار سهل نينوى والموصل والعراق بمصداقية ومهنية.">
+<title>سهل نينوى | منصة إعلامية</title>
+<style>
+:root {
+  --navy:#101c2c;
+  --navy2:#192b40;
+  --gold:#d9b56d;
+  --red:#bd343b;
+  --paper:#f4f5f7;
+  --ink:#182438;
+  --muted:#788292;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.topbar{background:#0a1421;color:#d9e0e8;font-size:12px;padding:7px 0}
+.toprow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.masthead{background:var(--navy);color:white;padding:25px 0 23px;border-bottom:3px solid var(--gold)}
+.brand{display:flex;align-items:center;gap:15px}
+.logo{width:68px;height:68px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:30px;font-weight:bold;flex-shrink:0}
+.brand h1{margin:0;font-size:clamp(27px,5vw,42px);letter-spacing:-1px}
+.brand p{margin:2px 0 0;color:#c4ceda;font-size:13px}
+.nav{background:#fff;box-shadow:0 3px 12px #1722380c}
+.navinner{display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav a{padding:13px 16px;white-space:nowrap;font-size:13px;font-weight:bold;border-bottom:3px solid transparent}
+.nav a:hover,.nav a.active{color:#9b7028;border-bottom-color:var(--gold)}
+.breaking{margin:20px auto;display:flex;align-items:stretch;background:white;border-radius:7px;overflow:hidden;box-shadow:0 3px 14px #1722380a}
+.breaking strong{background:var(--red);color:white;padding:10px 17px;white-space:nowrap;font-size:13px}
+.breaking span{padding:10px 15px;font-size:13px;color:#455064}
+.hero{display:grid;grid-template-columns:1.6fr 1fr;gap:17px;margin-bottom:26px}
+.hero-main{min-height:330px;background:linear-gradient(135deg,#263e55,#101c2c 75%);border-radius:10px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;color:white;position:relative;overflow:hidden}
+.hero-main:before{content:"سهل نينوى";position:absolute;top:18px;left:22px;font-size:50px;font-weight:bold;color:#ffffff0b}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:bold}
+.hero-main h2{font-size:clamp(24px,4vw,36px);line-height:1.55;margin:8px 0}
+.hero-main p{color:#d2dbe4;font-size:14px;margin:0}
+.hero-side{display:grid;gap:14px}
+.side-card{background:white;border-radius:9px;padding:19px;border-right:4px solid var(--gold);display:flex;flex-direction:column;justify-content:center}
+.side-card h3{font-size:17px;margin:7px 0}
+.side-card p{margin:0;color:var(--muted);font-size:12px}
+.section-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #e1e4e9;margin:30px 0 17px}
+.section-head h2{font-size:21px;margin:0;padding:0 0 9px;border-bottom:3px solid var(--gold);margin-bottom:-2px}
+.section-head span{font-size:12px;color:var(--muted)}
+.tools{display:flex;gap:10px;margin-bottom:17px}
+.tools input{min-width:0;flex:1;border:1px solid #e1e5eb;background:white;border-radius:7px;padding:12px 14px;outline:none}
+.tools input:focus{border-color:var(--gold)}
+.tools button{border:0;background:var(--navy);color:white;border-radius:7px;padding:0 18px;cursor:pointer}
+.categories{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.cat{background:white;border:1px solid #e3e6eb;border-radius:20px;padding:7px 16px;white-space:nowrap;cursor:pointer;color:#485365;font-size:12px}
+.cat.active,.cat:hover{background:var(--navy);color:white;border-color:var(--navy)}
+.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.news-card{background:white;border:1px solid #e9ebef;border-radius:9px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.news-card:hover{transform:translateY(-3px);box-shadow:0 9px 25px #14243a12}
+.thumb{height:130px;background:linear-gradient(135deg,#e6dcc5,#c4d0d9);display:grid;place-items:center;font-size:39px}
+.news-card:nth-child(3n+2) .thumb{background:linear-gradient(135deg,#d5e1df,#9eb9b5)}
+.news-card:nth-child(3n) .thumb{background:linear-gradient(135deg,#d9dce9,#b5bfd5)}
+.cardbody{padding:16px}
+.tag{display:inline-block;color:#946b28;background:#f8f1e3;padding:3px 9px;border-radius:4px;font-size:11px}
+.news-card h3{font-size:16px;line-height:1.8;margin:10px 0}
+.news-card p{font-size:12px;color:var(--muted);margin:0 0 10px}
+.meta{font-size:11px;color:#8b94a2}
+.empty{grid-column:1/-1;text-align:center;padding:30px;background:white;border-radius:8px;color:var(--muted)}
+.about{background:#fff;margin:35px 0;border-radius:10px;padding:24px;border:1px solid #e8ebef}
+.about h2{margin:0 0 8px;font-size:20px}
+.about p{margin:0;color:#647083;font-size:14px}
+.footer{background:var(--navy);color:#d4dce5;margin-top:45px;padding:32px 0 15px}
+.footergrid{display:grid;grid-template-columns:2fr 1fr;gap:25px}
+.footer h2{color:var(--gold);margin:0 0 8px}
+.footer p{font-size:13px;color:#b8c3d0}
+.footerlinks{display:flex;flex-wrap:wrap;gap:12px;font-size:13px}
+.copyright{border-top:1px solid #ffffff1b;margin-top:22px;padding-top:12px;font-size:11px;color:#a9b5c3}
+.notice{background:#fff8e9;border:1px solid #ead6a7;padding:12px 15px;border-radius:7px;font-size:12px;color:#6e5523;margin:20px 0}
+@media(max-width:700px){
+ .hero{grid-template-columns:1fr}
+ .hero-main{min-height:290px;padding:23px}
+ .hero-side{grid-template-columns:1fr 1fr}
+ .side-card{padding:13px}
+ .side-card h3{font-size:14px}
+ .news-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .thumb{height:100px}
+ .cardbody{padding:12px}
+ .news-card h3{font-size:14px}
+ .footergrid{grid-template-columns:1fr}
+ .brand p{font-size:11px}
+ .logo{width:55px;height:55px;font-size:24px}
+}
+@media(max-width:390px){.news-grid{grid-template-columns:1fr}.thumb{height:130px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+ <div class="container toprow">
+  <span>من سهل نينوى إلى العالم</span>
+  <span id="today">منصة إعلامية عراقية</span>
+ </div>
+</div>
+
+<header class="masthead">
+ <div class="container brand">
+  <div class="logo">س</div>
+  <div>
+   <h1>سهل نينوى</h1>
+   <p>صوت المنطقة.. والحقيقة أولًا</p>
+  </div>
+ </div>
+</header>
+
+<nav class="nav">
+ <div class="container navinner">
+  <a class="active" href="#home">الرئيسية</a>
+  <a href="#news">آخر الأخبار</a>
+  <a href="#news" data-filter="سهل نينوى">سهل نينوى</a>
+  <a href="#news" data-filter="نينوى">نينوى</a>
+  <a href="#news" data-filter="العراق">العراق</a>
+  <a href="#about">من نحن</a>
+ </div>
+</nav>
+
+<main class="container" id="home">
+ <div class="breaking">
+  <strong>نبض سهل نينوى</strong>
+  <span>تابعوا آخر المستجدات والأخبار المحلية عبر منصتنا الإعلامية.</span>
+ </div>
+
+ <section class="hero">
+  <article class="hero-main">
+   <span class="eyebrow">أهلاً بكم في سهل نينوى</span>
+   <h2>الأخبار من قلب المنطقة.. بمهنية ومصداقية</h2>
+   <p>منصتكم لمتابعة أخبار سهل نينوى ونينوى والعراق.</p>
+  </article>
+  <div class="hero-side">
+   <article class="side-card">
+    <span class="eyebrow">تغطية محلية</span>
+    <h3>سهل نينوى في صدارة اهتمامنا</h3>
+    <p>الأحداث والخدمات وقضايا المواطنين.</p>
+   </article>
+   <article class="side-card">
+    <span class="eyebrow">رسالتنا</span>
+    <h3>خبر موثوق.. وصوت للجميع</h3>
+    <p>نقل الوقائع بمسؤولية ووضوح.</p>
+   </article>
+  </div>
+ </section>
+
+ <section id="news">
+  <div class="section-head">
+   <h2>آخر الأخبار</h2>
+   <span>أخبار ومتابعات</span>
+  </div>
+
+  <div class="tools">
+   <input id="search" type="search" placeholder="ابحث عن خبر..." aria-label="ابحث عن خبر">
+   <button id="searchBtn">بحث</button>
+  </div>
+
+  <div class="categories">
+   <button class="cat active" data-category="الكل">الكل</button>
+   <button class="cat" data-category="سهل نينوى">سهل نينوى</button>
+   <button class="cat" data-category="نينوى">نينوى</button>
+   <button class="cat" data-category="العراق">العراق</button>
+   <button class="cat" data-category="مجتمع">مجتمع</button>
+  </div>
+
+  <div class="news-grid" id="newsGrid">
+   <article class="news-card" data-category="سهل نينوى">
+    <div class="thumb">🏘️</div>
+    <div class="cardbody">
+     <span class="tag">سهل نينوى</span>
+     <h3>أخبار سهل نينوى.. مساحة لقضايا المواطنين</h3>
+     <p>تابعوا المستجدات الخدمية والمجتمعية في المنطقة.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+   <article class="news-card" data-category="نينوى">
+    <div class="thumb">🏛️</div>
+    <div class="cardbody">
+     <span class="tag">نينوى</span>
+     <h3>نينوى.. متابعة مستمرة للمشاريع والخدمات</h3>
+     <p>مساحة لتغطية أخبار المحافظة واحتياجات أهلها.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+   <article class="news-card" data-category="العراق">
+    <div class="thumb">🇮🇶</div>
+    <div class="cardbody">
+     <span class="tag">العراق</span>
+     <h3>العراق في الأخبار.. أبرز المستجدات المحلية</h3>
+     <p>تغطية للشأن العراقي من مصادر موثوقة.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+   <article class="news-card" data-category="مجتمع">
+    <div class="thumb">🤝</div>
+    <div class="cardbody">
+     <span class="tag">مجتمع</span>
+     <h3>المبادرات المجتمعية ودورها في خدمة المنطقة</h3>
+     <p>قصص ومبادرات تستحق أن تصل إلى الجميع.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+   <article class="news-card" data-category="سهل نينوى">
+    <div class="thumb">📰</div>
+    <div class="cardbody">
+     <span class="tag">سهل نينوى</span>
+     <h3>منصتكم الإعلامية لمتابعة أخبار المنطقة</h3>
+     <p>نرصد القضايا المحلية ونهتم بصوت المواطن.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+   <article class="news-card" data-category="نينوى">
+    <div class="thumb">📍</div>
+    <div class="cardbody">
+     <span class="tag">نينوى</span>
+     <h3>من نينوى.. أخبار الناس وتفاصيل الحياة اليومية</h3>
+     <p>تغطية محلية تهتم بالحدث وتفاصيله.</p>
+     <div class="meta">خبر تعريفي تجريبي</div>
+    </div>
+   </article>
+  </div>
+ </section>
+
+ <section class="about" id="about">
+  <h2>عن سهل نينوى</h2>
+  <p>سهل نينوى منصة إعلامية تهتم بأخبار المنطقة ومحافظة نينوى والعراق، وتسعى إلى نقل المعلومات بمهنية ووضوح، وتسليط الضوء على قضايا المواطنين والمبادرات المجتمعية.</p>
+ </section>
+
+ <div class="notice">تنبيه: الأخبار المعروضة حاليًا نماذج تجريبية لتصميم الموقع، وليست أخبارًا حقيقية. يجب استبدالها بالأخبار الفعلية قبل مشاركة الموقع مع الجمهور.</div>
+</main>
+
+<footer class="footer">
+ <div class="container">
+  <div class="footergrid">
+   <div>
+    <h2>سهل نينوى</h2>
+    <p>منصة إعلامية محلية.. ننقل الخبر بمسؤولية، ونهتم بقضايا الناس.</p>
+   </div>
+   <div>
+    <h3>روابط الموقع</h3>
+    <div class="footerlinks">
+     <a href="#home">الرئيسية</a>
+     <a href="#news">الأخبار</a>
+     <a href="#about">من نحن</a>
+    </div>
+   </div>
+  </div>
+  <div class="copyright">© <span id="year"></span> سهل نينوى — جميع الحقوق محفوظة.</div>
+ </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("today").textContent =
+ new Date().toLocaleDateString("ar-IQ",{year:"numeric",month:"long",day:"numeric"});
+
+let selectedCategory = "الكل";
+const cards = [...document.querySelectorAll(".news-card")];
+const searchInput = document.getElementById("search");
+
+function filterNews(){
+ const term = searchInput.value.trim().toLocaleLowerCase("ar");
+ let count = 0;
+ cards.forEach(card => {
+  const category = card.dataset.category;
+  const matchesCategory = selectedCategory === "الكل" || category === selectedCategory;
+  const matchesText = card.innerText.toLocaleLowerCase("ar").includes(term);
+  const visible = matchesCategory && matchesText;
+  card.hidden = !visible;
+  if(visible) count++;
+ });
+ let empty = document.getElementById("emptyMessage");
+ if(!count){
+  if(!empty){
+   empty = document.createElement("div");
+   empty.id = "emptyMessage";
+   empty.className = "empty";
+   empty.textContent = "لا توجد نتائج مطابقة لبحثك.";
+   document.getElementById("newsGrid").appendChild(empty);
+  }
+ } else if(empty) empty.remove();
+}
+
+document.querySelectorAll(".cat").forEach(button=>{
+ button.addEventListener("click",()=>{
+  selectedCategory = button.dataset.category;
+  document.querySelectorAll(".cat").forEach(b=>b.classList.toggle("active",b===button));
+  filterNews();
+ });
+});
+document.getElementById("searchBtn").addEventListener("click",filterNews);
+searchInput.addEventListener("input",filterNews);
+
+document.querySelectorAll("[data-filter]").forEach(link=>{
+ link.addEventListener("click",()=>{
+  selectedCategory = link.dataset.filter;
+  document.querySelectorAll(".cat").forEach(b=>b.classList.toggle("active",b.dataset.category===selectedCategory));
+  filterNews();
+ });
+});
+</script>
+</body>
+     </html>
+
